@@ -1,5 +1,3 @@
-
-# Importing Libraries
 import warnings
 from catboost import CatBoostRegressor
 from lightgbm import LGBMRegressor
@@ -337,7 +335,7 @@ rmse = np.mean(np.sqrt(-cross_val_score(final_model, X, y, cv=5, scoring="neg_me
 lgbm_tuned = LGBMRegressor(**lgbm_gs_best.best_params_).fit(X_train, y_train)
 y_pred = lgbm_tuned.predict(X_test)
 
-# Inverse log transformation of the predictions
+
 new_y = np.expm1(y_pred)
 new_y_test = np.expm1(y_test)
 
